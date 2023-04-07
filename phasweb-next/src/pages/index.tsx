@@ -10,7 +10,9 @@ export default function Home() {
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">PhasWEB</h1>
+            <h1 className="mb-5 text-5xl font-bold bg-gradient-to-r from-slate-300 to-slate-500 bg-clip-text text-transparent">
+              PhasWEB
+            </h1>
             <span className="mb-5">
               <b>THE</b> Phasmophobia utility that you've been waiting for!
               <br />
