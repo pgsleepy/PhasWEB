@@ -1,27 +1,25 @@
-import React from "react";
-
 const links = [
   {
     href: "/",
-    label: "HOME",
+    label: "Home",
   },
   {
     href: "/shared-evidence",
-    label: "SHARED JOURNAL",
+    label: "Shared journal",
   },
   {
     href: "/0e0s",
-    label: "0 EVIDENCE & 0 SANITY",
+    label: "0 Evidence, 0 Sanity",
   },
   {
     href: "/maps",
-    label: "MAP LOCATIONS",
+    label: "Map Browser",
   },
 ];
 
 export default function NavBar() {
   return (
-    <div className="navbar bg-base-100 fixed">
+    <div className="navbar bg-base-300 fixed z-10">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -51,7 +49,7 @@ export default function NavBar() {
             ))}
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-2xl font-bold bg-gradient-to-br from-slate-200 to-slate-500 bg-clip-text text-transparent">
+        <a className="btn btn-ghost normal-case text-2xl font-bold bg-gradient-to-r from-slate-200 to-slate-500 bg-clip-text text-transparent">
           PhasWEB
         </a>
       </div>
@@ -65,7 +63,9 @@ export default function NavBar() {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Get started</a>
+        <a className="btn" href="/login">
+          LOGIN
+        </a>
       </div>
     </div>
   );
