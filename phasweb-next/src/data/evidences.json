@@ -1,0 +1,35 @@
+{
+  "dots": {
+    "name": "DOTS",
+    "color": "primary"
+  },
+  "emf": {
+    "name": "EMF Level 5",
+    "short": "EMF",
+    "color": "secondary"
+  },
+  "finger": {
+    "name": "Fingerprints",
+    "color": "accent"
+  },
+  "freezing": {
+    "name": "Freezing Temperatures",
+    "short": "FREEZING",
+    "color": "success"
+  },
+  "orbs": {
+    "name": "Ghost Orbs",
+    "short": "ORBS",
+    "color": "warning"
+  },
+  "writing": {
+    "name": "Ghost Writing",
+    "short": "WRITING",
+    "color": "info"
+  },
+  "sbox": {
+    "name": "Spirit Box",
+    "short": "SPIRIT BOX",
+    "color": "error"
+  }
+}

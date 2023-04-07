@@ -1,16 +1,220 @@
-import EvidenceCard from "@/Components/Evidence";
-import GhostsCard from "@/Components/GhostsCard";
+import { useState } from "react";
+import { EvidenceItem, Ghosts } from "@/types";
+
+import ghost from "@/data/ghosts.json";
+import evidences from "@/data/evidences.json";
+
+const evidence: EvidenceItem = evidences;
+const ghosts: Ghosts[] = ghost;
 
 export default function sharedevidence() {
+  //* State variables
+  const [collapsedGhosts, setCollapsedGhosts] = useState<{
+    [key: string]: boolean;
+  }>({});
+
+  const [selectedEvidences, setSelectedEvidences] = useState<string[]>([]);
+
+  //* Toggle the ghost cards collapsed/uncollapsed.
+  const toggleCollapse = (ghostName: string) => {
+    setCollapsedGhosts((prevCollapsedGhosts) => ({
+      ...prevCollapsedGhosts,
+      [ghostName]: !prevCollapsedGhosts[ghostName],
+    }));
+
+    //* Find the index of the ghost in the array
+    const ghostIndex = ghosts.findIndex((ghost) => ghost.name === ghostName);
+
+    //* Remove the ghost
+    const ghost = ghosts.splice(ghostIndex, 1)[0];
+
+    //* Add the ghost back to the array based on if it's collapsed state
+    if (!collapsedGhosts[ghostName]) ghosts.push(ghost);
+    else ghosts.splice(ghostIndex, 0, ghost);
+  };
+
+  //* Filter the ghosts based on the selected evidences
+  const filteredGhosts = ghosts.filter((ghost) =>
+    selectedEvidences.every((evidence) => ghost.evidences.includes(evidence))
+  );
+
+  //* Sort the ghosts based on their collapsed state and name
+  const sortedGhosts = filteredGhosts.sort((a, b) => {
+    //* Get the states of the ghost card.
+    const aCollapsed = collapsedGhosts[a.name] || false;
+    const bCollapsed = collapsedGhosts[b.name] || false;
+
+    //* If one is collapsed and the other isn't then move it to the bottom of the sort.
+    if (aCollapsed && !bCollapsed) {
+      return 1;
+    }
+    if (!aCollapsed && bCollapsed) {
+      return -1;
+    }
+
+    //* Then compare by name in ascending order.
+    if (a.name > b.name) {
+      return 1;
+    }
+    if (a.name < b.name) {
+      return -1;
+    }
+    return 0;
+  });
+
+  //* Handle checkbox changes
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, checked } = e.target;
+    if (checked) {
+      setSelectedEvidences([...selectedEvidences, id]);
+    } else {
+      setSelectedEvidences(
+        selectedEvidences.filter((evidence) => evidence !== id)
+      );
+    }
+  };
+
   return (
     <>
       <div className="flex h-screen">
         <div className="hero-overlay bg-opacity-60 absolute"></div>
         <div className="m-auto mr-5 flex-row gap-4 ">
-          <EvidenceCard />
+          <div className="card w-500 bg-base-300 shadow-xl">
+            <div className="card-body">
+              <h4 className="card-title">Evidence Picker!</h4>
+              <p className="text-xs">
+                Here you can select the evidences you've found!
+                <br />
+                Goodluck and happy hunting!
+              </p>
+              <div className="divider mt-0 mb-0" />
+
+              {Object.keys(evidence).map((key) => {
+                const item = evidence[key];
+                return (
+                  <label
+                    className="cursor-pointer flex items-center"
+                    key={item.name}
+                  >
+                    <input
+                      type="checkbox"
+                      className="checkbox"
+                      id={key}
+                      checked={selectedEvidences.includes(key)}
+                      onChange={handleCheckboxChange}
+                    />
+                    <span className="label-text pl-5">{item.name}</span>
+                  </label>
+                );
+              })}
+            </div>
+          </div>
         </div>
         <div className="m-auto ml-5 flex-row gap-4">
-          <GhostsCard />
+          <div className="card w-150 bg-base-300 shadow-xl">
+            <div className="card-body">
+              <h2 className="card-title">Phasmophobia Ghosts</h2>
+              <p className="text-xs">
+                The ghosts have different abilities and such!
+                <br />
+                So make sure to read through them to get a better understanding
+                of the ghosts!
+                <br />
+                The list is scrollable!
+              </p>
+              <div className="divider mt-0 mb-0" />
+
+              <div
+                className="Ghosts overflow-auto no-scrollbar"
+                style={{ maxHeight: "36rem", overflowX: "hidden" }}
+              >
+                <div className="gap-5">
+                  {filteredGhosts.map((ghost) => (
+                    <div className={ghost.name} key={ghost.name}>
+                      <div className="card bg-base-100 p-5">
+                        <div className="card-actions justify-end">
+                          <button
+                            className="btn btn-square btn-sm absolute"
+                            onClick={() => toggleCollapse(ghost.name)}
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="h-4 w-4"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M6 18L18 6M6 6l12 12"
+                              />
+                            </svg>
+                          </button>
+                        </div>
+
+                        <div className="card-title flex items-center">
+                          <a href="/">{ghost.name}</a>
+                          <div className="flex flex-row gap-2 mb-1.5">
+                            {ghost.evidences.map((evidenced) => (
+                              <div
+                                className={`badge badge-${evidence[evidenced]?.color} badge-outline mt-2 text-xs`}
+                                key={evidenced}
+                              >
+                                {evidence[evidenced]?.short ??
+                                  evidenced.toUpperCase()}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {!collapsedGhosts[ghost.name] && (
+                          <>
+                            <div className="text-xs">{ghost.description}</div>
+
+                            <div className="divider " />
+                            <div className="flex m-auto">
+                              <div className="flex flex-row">
+                                <div className="card w-25 ">
+                                  <p className="text-xm">Identifier</p>
+                                  <p className="text-xs">
+                                    {ghost.identifiers?.map((identifier) => (
+                                      <span
+                                        key={identifier}
+                                        dangerouslySetInnerHTML={{
+                                          __html: identifier,
+                                        }}
+                                      ></span>
+                                    ))}
+                                  </p>
+                                </div>
+                                <div className="divider divider-horizontal "></div>
+                                <div className="card w-25 ">
+                                  <p className="text-xm">Properties</p>
+                                  <p className="text-xs">
+                                    {ghost.properties?.map((properties) => (
+                                      <span
+                                        key={properties}
+                                        dangerouslySetInnerHTML={{
+                                          __html: properties,
+                                        }}
+                                      ></span>
+                                    )) ?? <span>No properties available.</span>}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </>
+                        )}
+                      </div>
+                      <br />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>
