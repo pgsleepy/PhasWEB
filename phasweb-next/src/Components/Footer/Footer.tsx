@@ -8,7 +8,12 @@ export default function Footer() {
     >
       <div>
         <p>
-          Copyright © 2023 - Made by{" "}
+          Copyright © 2023 &bull;{" "}
+          <small>
+            PhasWEB is a fan-made website and is in no way affiliated with
+            Kinetic Games/Phasmophobia
+          </small>{" "}
+          &bull; Made by{" "}
           <a href="https://www.github.com/pgsleepy">
             <u>PGSleepy</u>
           </a>
