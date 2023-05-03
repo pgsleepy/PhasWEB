@@ -16,18 +16,25 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [require("daisyui"),
-  plugin(function ({ addUtilities }) {
-    addUtilities({
-      '.no-scrollbar::-webkit-scrollbar': {
-        'display': 'none',
-      },
-      '.no-scrollbar': {
-        '-ms-overflow-style': 'none',
-        'scrollbar-width': 'none',
-      }
+  variants: {
+    scrollbar: ['rounded']
+  },
+  plugins: [
+    require("daisyui"),
+
+    require('tailwind-scrollbar'),
+
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        '.no-scrollbar::-webkit-scrollbar': {
+          'display': 'none',
+        },
+        '.no-scrollbar': {
+          '-ms-overflow-style': 'none',
+          'scrollbar-width': 'none',
+        }
+      })
     })
-  })
   ],
 }
 
