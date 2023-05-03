@@ -6,7 +6,7 @@ export default function EvidenceCard() {
       <div className="card-body">
         <h4 className="card-title">Evidence Picker!</h4>
         <p className="text-xs">
-          Here you can select the evidences you've found!
+          Here you can select the evidences you&apos;ve found!
           <br />
           Goodluck and happy hunting!
         </p>
