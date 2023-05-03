@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Key, useState } from "react";
 import { EvidenceItem, Ghosts } from "@/types";
 
 import ghost from "@/data/ghosts.json";
@@ -7,7 +7,7 @@ import evidences from "@/data/evidences.json";
 const evidence: EvidenceItem = evidences;
 const ghosts: Ghosts[] = ghost;
 
-export default function sharedevidence() {
+export default function Sharedevidence() {
   //* State variables
   const [collapsedGhosts, setCollapsedGhosts] = useState<{
     [key: string]: boolean;
@@ -17,6 +17,11 @@ export default function sharedevidence() {
 
   //* Toggle the ghost cards collapsed/uncollapsed.
   const toggleCollapse = (ghostName: string) => {
+    //? Scrollbar is constantly shifting up after collapse.
+    //? This will make it scroll back basically.
+    const container = document.querySelector(".Ghosts");
+    let scrollTop = container?.scrollTop || 0;
+
     setCollapsedGhosts((prevCollapsedGhosts) => ({
       ...prevCollapsedGhosts,
       [ghostName]: !prevCollapsedGhosts[ghostName],
@@ -31,6 +36,9 @@ export default function sharedevidence() {
     //* Add the ghost back to the array based on if it's collapsed state
     if (!collapsedGhosts[ghostName]) ghosts.push(ghost);
     else ghosts.splice(ghostIndex, 0, ghost);
+    console.log(scrollTop);
+    //* Scroll back to the position where it was.
+    container!.scrollTop = scrollTop;
   };
 
   //* Filter the ghosts based on the selected evidences
@@ -38,8 +46,12 @@ export default function sharedevidence() {
     selectedEvidences.every((evidence) => ghost.evidences.includes(evidence))
   );
 
+  const remainingEvidences = Object.keys(evidence).filter((key) => {
+    return filteredGhosts.some((ghost) => ghost.evidences.includes(key));
+  });
+
   //* Sort the ghosts based on their collapsed state and name
-  const sortedGhosts = filteredGhosts.sort((a, b) => {
+  filteredGhosts.sort((a, b) => {
     //* Get the states of the ghost card.
     const aCollapsed = collapsedGhosts[a.name] || false;
     const bCollapsed = collapsedGhosts[b.name] || false;
@@ -91,6 +103,9 @@ export default function sharedevidence() {
 
               {Object.keys(evidence).map((key) => {
                 const item = evidence[key];
+                const disabled =
+                  !remainingEvidences.includes(key) &&
+                  !selectedEvidences.includes(key);
                 return (
                   <label
                     className="cursor-pointer flex items-center"
@@ -102,6 +117,7 @@ export default function sharedevidence() {
                       id={key}
                       checked={selectedEvidences.includes(key)}
                       onChange={handleCheckboxChange}
+                      disabled={disabled}
                     />
                     <span className="label-text pl-5">{item.name}</span>
                   </label>
@@ -112,27 +128,27 @@ export default function sharedevidence() {
         </div>
         <div className="m-auto ml-5 flex-row gap-4">
           <div className="card w-150 bg-base-300 shadow-xl">
-            <div className="card-body">
-              <h2 className="card-title">Phasmophobia Ghosts</h2>
-              <p className="text-xs">
+            <div className="card-body ">
+              <h2 className="card-title justify-center text-center">
+                Phasmophobia Ghosts
+              </h2>
+              <p className="text-xs justify-center text-center">
                 The ghosts have different abilities and such!
                 <br />
                 So make sure to read through them to get a better understanding
                 of the ghosts!
-                <br />
-                The list is scrollable!
               </p>
               <div className="divider mt-0 mb-0" />
 
               <div
-                className="Ghosts overflow-auto no-scrollbar"
+                className="Ghosts no-scrollbar"
                 style={{ maxHeight: "36rem", overflowX: "hidden" }}
               >
-                <div className="gap-5">
+                <div className="gap-5 max-w-lg">
                   {filteredGhosts.map((ghost) => (
                     <div className={ghost.name} key={ghost.name}>
-                      <div className="card bg-base-100 p-5">
-                        <div className="card-actions justify-end">
+                      <div className="card bg-base-100  p-5">
+                        <div className="card-actions justify-end ">
                           <button
                             className="btn btn-square btn-sm absolute"
                             onClick={() => toggleCollapse(ghost.name)}
@@ -153,9 +169,13 @@ export default function sharedevidence() {
                             </svg>
                           </button>
                         </div>
-
                         <div className="card-title flex items-center">
-                          <a href="/">{ghost.name}</a>
+                          <a
+                            href={`https://phasmophobia.fandom.com/wiki/${ghost.name}`}
+                            target="_blank"
+                          >
+                            {ghost.name}
+                          </a>
                           <div className="flex flex-row gap-2 mb-1.5">
                             {ghost.evidences.map((evidenced) => (
                               <div
@@ -172,12 +192,11 @@ export default function sharedevidence() {
                         {!collapsedGhosts[ghost.name] && (
                           <>
                             <div className="text-xs">{ghost.description}</div>
-
                             <div className="divider " />
                             <div className="flex m-auto">
-                              <div className="flex flex-row">
-                                <div className="card w-25 ">
-                                  <p className="text-xm">Identifier</p>
+                              <div className="flex flex-row justify-center text-center">
+                                <div className="card w-25 max-w-xs">
+                                  <p>Identifier</p>
                                   <p className="text-xs">
                                     {ghost.identifiers?.map((identifier) => (
                                       <span
@@ -189,8 +208,8 @@ export default function sharedevidence() {
                                     ))}
                                   </p>
                                 </div>
-                                <div className="divider divider-horizontal "></div>
-                                <div className="card w-25 ">
+                                <div className="divider divider-horizontal"></div>
+                                <div className="card w-25 max-w-xs">
                                   <p className="text-xm">Properties</p>
                                   <p className="text-xs">
                                     {ghost.properties?.map((properties) => (
@@ -205,6 +224,19 @@ export default function sharedevidence() {
                                 </div>
                               </div>
                             </div>
+                            {ghost.ability && (
+                              <div>
+                                <div className="divider mt-5 mb-0" />
+                                <div className="flex m-auto text-center justify-center">
+                                  <div className="card w-25 max-w-md">
+                                    <p>Unique Ability</p>
+                                    <p className="text-xs">
+                                      <b>{ghost.ability}</b>
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            )}
                           </>
                         )}
                       </div>
