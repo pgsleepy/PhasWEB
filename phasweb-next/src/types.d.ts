@@ -12,4 +12,5 @@ export interface Ghosts {
   evidences: string[];
   identifiers: string[];
   properties?: string[] | null;
+  ability?: string | null;
 }
