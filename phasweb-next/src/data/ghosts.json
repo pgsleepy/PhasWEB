@@ -1,5 +1,30 @@
 [
   {
+    "name": "Banshee",
+    "description": "A banshee has one target to kill and will not rest otherwise!",
+    "evidences": ["finger", "orbs", "dots"],
+    "identifiers": [
+      "&bull; Will target one player at a time. <br />",
+      "&bull; Drains more sanity with singing. <br />"
+    ],
+    "properties": ["&bull; Higher chance on <br />singing events.<br />"],
+    "ability": "Will do a unique banshee scream on the parabolic microphone!"
+  },
+  {
+    "name": "Demon",
+    "description": "One of the most aggressive ghosts!",
+    "evidences": ["finger", "writing", "freezing"],
+    "identifiers": [
+      "&bull; Will do a lot more hunts than others <br />",
+      "&bull; Can hunt within 20 seconds. <br />"
+    ],
+    "properties": [
+      "&bull; 60 seconds Smudge cooldown. <br />",
+      "&bull; Crucifix range increased to 5 meters"
+    ],
+    "ability": "Can do a hunt at any % sanity."
+  },
+  {
     "name": "Deogen",
     "description": "A deogen is a speed demon when far, a snail demon when near!",
     "evidences": ["writing", "sbox", "dots"],
@@ -11,26 +36,305 @@
     "properties": [
       "&bull; Above 6 meters: <b>3 m/s</b> <br />",
       "&bull; Below 2.5 meters: <b>0.4 m/s</b> <br />"
+    ],
+    "ability": "Can produce a unique response through the Spirit Box"
+  },
+  {
+    "name": "Goryo",
+    "description": "Will only show on it's biggest love: The camera!",
+    "evidences": ["emf", "finger", "dots"],
+    "identifiers": [
+      "&bull; Shows DOTS <u>only</u> <br />through camera. <br /><br />",
+      "&bull; Cant wander far from <br />it's room or change it. <br />"
+    ],
+    "properties": ["&bull; Roams are never far. <br />"]
+  },
+  {
+    "name": "Hantu",
+    "description": "Thrives in the coldest climates!",
+    "evidences": ["finger", "orbs", "freezing"],
+    "identifiers": [
+      "&bull; Moves quicker in colder <br />areas during hunts<br />"
+    ],
+    "properties": [
+      "&bull; Speedier based on temperatures.<br />",
+      "> 15°C: 1.4m/s <br />",
+      "< 0°C (32°F): 2.7m/s"
+    ],
+    "ability": "Could have freezing breath during hunting."
+  },
+  {
+    "name": "Jinn",
+    "description": "A deogen is a speed demon when far, a snail demon when near!",
+    "evidences": ["emf", "finger", "freezing"],
+    "identifiers": [
+      "&bull; Will chase at higher<br /> speed when further away. <br />"
+    ],
+    "properties": [
+      "Will increase speed to 2.5m/s when:<br />",
+      "&bull; The fuse box is turned on.<br />",
+      "&bull; It has line of sight.<br />",
+      "&bull; It's 3 metres or further away."
+    ],
+    "ability": "If the fuse box is on and the Jinn uses it's ability it can zap sanity from all players in the room or 3 meters witin it by 25%. If it used it's ability it will produce an EMF 2/3 near the breaker."
+  },
+  {
+    "name": "Mare",
+    "description": "The ghost that loves the dark!",
+    "evidences": ["sbox", "orbs", "writing"],
+    "identifiers": [
+      "&bull; Higher chance of light-shatter event. <br />",
+      "&bull; When roaming it will rather roam to <br />unlit rooms.<br />"
+    ],
+    "properties": [
+      "&bull; Hunts at 60% threshold in dark. <br />",
+      "&bull; Hunts at 40% threshold in light. <br />"
+    ],
+    "ability": "A mare may turn off a light when within 4 meters of a player. The ability has a 10 seconds cooldown which gets reset when turning a light, spammies won't work ;)"
+  },
+  {
+    "name": "Moroi",
+    "description": "The curser ghost that depends on your sanity!",
+    "evidences": ["sbox", "writing", "freezing"],
+    "identifiers": [
+      "&bull; The fastest ghost in the game. <br /><i>(in line of sight)</i> <br />",
+      "&bull; Faster based on lower (team) sanity. <br />"
+    ],
+    "properties": [
+      "Speed per sanity: <br />",
+      "&bull; <b> 45%:</b> 1.5m/s<br />",
+      "&bull; <b>40%-45%</b>: 1.583m/s <br />",
+      "&bull; <b>35%-40%</b>: 1.66m/s<br />",
+      "&bull; <b>30%-35%</b>: 1.749m/s<br />",
+      "&bull; <b>25%-30%</b>: 1.832m/s<br />",
+      "&bull; <b>20%-25%</b>: 1.915m/s<br />",
+      "&bull; <b>15%-20%</b>: 1.998m/s<br />",
+      "&bull; <b>10%-15%</b>: 2.081m/s<br />",
+      "&bull; <b>5%-10%</b>: 2.164m/s<br />",
+      "&bull; <b>0%-5%</b>: 2.25m/s"
+    ],
+    "ability": "May curse you through the spirit box or Parabolic Microphone. Sanity drail will be doubled and not even holding a candle will prevent drainage."
+  },
+  {
+    "name": "Myling",
+    "description": "Talkative on Parabolic Microphone but very quiet when hunting.",
+    "evidences": ["emf", "finger", "writing"],
+    "identifiers": [
+      "&bull; Quieter while hunting. <br />",
+      "&bull; More vocal through equipment. <br />",
+      "&bull; If footsteps are audible only <br />when equipment starts flickering<br />It may be a Myling."
     ]
+  },
+  {
+    "name": "Obake",
+    "description": "The shapeshifter ghost that will take many forms!",
+    "evidences": ["emf", "finger", "orbs"],
+    "identifiers": [
+      "&bull; May leave a unique handprint: <br />",
+      "&bull; Six fingered handprint. <br />",
+      "<i>(Instead of 5)</i><br />",
+      "&bull; Two fingers on light switch.<br />",
+      "<i>(Instead of 1)<br /></i>",
+      "&bull; Five fingerprints on keyboard<br />",
+      "<i>(Instead of 4)</i>"
+    ],
+    "properties": [
+      "&bull; Fingerprint may disappear faster. <br /><i>(Than usual 2 minutes)</i><br />",
+      "&bull; 80% Chance to leave fingerprint <br /><i>(Opposed to the usual 100%)</i><br />"
+    ],
+    "ability": "Has a 1/15 (6.67%) chance to blink in a different ghost model while hunting.  Guaranteed to happen at least once per hunt."
+  },
+  {
+    "name": "Oni",
+    "description": "The group killer of ghosts!",
+    "evidences": ["emf", "freezing", "dots"],
+    "identifiers": [
+      "&bull; Very visible during blinks. <br />",
+      "&bull; Cannot produce the 'airball' event. <br />",
+      "&bull; More active when people are nearby. <br />"
+    ],
+    "properties": [
+      "&bull; Double sanity drain when <br />the player's colliding ghost events. <br />",
+      "&bull; Prefers full form instead of shadow."
+    ]
+  },
+  {
+    "name": "Onryo",
+    "description": "Scaredy cat of fire!",
+    "evidences": ["sbox", "orbs", "freezing"],
+    "identifiers": [
+      "&bull; Chance to hunt at any sanity <br /after blowing out a flame.<br />",
+      "&bull; Flames prevent it from hunting. <br />",
+      "&bull; Blows out candles a lot more often. <br />"
+    ],
+    "properties": [
+      "&bull; Blows more candles out<br /><i>(Player deaths increase the chance)</i><br />",
+      "&bull; Every third flame it blows out <br /><b>may</b> initiate a hunt."
+    ]
+  },
+  {
+    "name": "Phantom",
+    "description": "The invisible roamer!",
+    "evidences": ["sbox", "finger", "dots"],
+    "identifiers": [
+      "&bull; Barely visible during hunts. <br />",
+      "&bull; May roam to random player. <br /><br />",
+      "&bull; <b>When making photograph during events</b>: <br />Will make it disappear<br />Won't hear heartbeats anymore.<br />Event sound continues to play."
+    ],
+    "properties": [
+      "&bull; During hunts flashes<br /> every 1 to 2 seconds. <br />"
+    ]
+  },
+  {
+    "name": "Poltergeist",
+    "description": "Most popular throwing ghost!",
+    "evidences": ["sbox", "writing", "finger"],
+    "identifiers": [
+      "&bull; May throw objects very hard. <br />",
+      "&bull; Can explode a pile of objects. <br />"
+    ],
+    "properties": [
+      "<b>During hunts:</b><br />",
+      "&bull; 100% chance to throw an item<br />every 0.5 seconds!"
+    ],
+    "ability": "Has the ability to throw multiple objects at once and can throw a single object a whole lote farther than other ghosts."
+  },
+  {
+    "name": "Raiju",
+    "description": "The electric boogaloo ghost!",
+    "evidences": ["emf", "orbs", "dots"],
+    "identifiers": [
+      "&bull; Speeds up based on electronics. <br />",
+      "<i>(Fixed speed of 2.5m/s)</i><br />"
+    ],
+    "properties": [
+      "<b>Effective range is based on map:</b> <br />",
+      "&bull; <b>Small maps</b>: 6m <br />",
+      "&bull; <b>Medium maps</b>: 8m<br />",
+      "&bull; <b>Large maps</b>: 10m<br /><br />"
+    ]
+  },
+  {
+    "name": "Revenant",
+    "description": "The violent and rapid ghost!",
+    "evidences": ["orbs", "writing", "freezing"],
+    "identifiers": [
+      "&bull; Will significantly increase speed. <br />",
+      "<i>(When in line of sight of a player.)</i><br />",
+      "&bull; Moves very slowly when roaming. <br />"
+    ],
+    "properties": [
+      "&bull; When in line of sight: <b>3 m/s</b> <br />",
+      "&bull; When roaming: <b>1 m/s</b>"
+    ]
+  },
+  {
+    "name": "Shade",
+    "description": "The shyest ghost of all!",
+    "evidences": ["emf", "writing", "freezing"],
+    "identifiers": [
+      "&bull; Very inactive ghost.<br />",
+      "&bull; Will not hunt/throw when near it. <br />",
+      "&bull; Insanely low hunting threshold <br />",
+      "&bull; Prefers hissing and shadow <br />ghost events."
+    ],
+    "properties": ["&bull; Will only hunt at 35% average sanity <br />"]
   },
   {
     "name": "Spirit",
-    "description": "A spirit is a very boring ghosts with no special abilities.",
-    "evidences": ["emf", "sbox", "finger"],
+    "description": "The only ghost that has literally no strengths!",
+    "evidences": ["emf", "sbox", "writing"],
+    "identifiers": ["&bull; Smudges double the hunt cooldown. <br />"]
+  },
+  {
+    "name": "Thaye",
+    "description": "The only ghost that can age!",
+    "evidences": ["orbs", "writing", "dots"],
     "identifiers": [
-      "&bull; You can smudge it yata <br />",
-      "&bull; Yeet yeet <br />",
-      "&bull; yaat yaat. <br />"
+      "&bull; Attempts to age every 1-2 minutes.<br />",
+      "<i>(When a player is in the room)</i><br />",
+      "&bull; Decreases in speed and activity<br /> because of it. <br />",
+      "&bull; Does <b>not</b> speed up with LOS. <br />"
+    ],
+    "properties": [
+      "<b><u>Age ability decrease properties</u></b>: <br />",
+      "<b>Speed:</b><br />",
+      "&bull; Starts initially with <b>2.75m/s</b> speed. <br />&bull; Decreases by <b>0.175</b> per age.<br />Finalizes at <b>1m/s</b><br /><br />",
+      "<b>Ghost Events:</b><br />",
+      "&bull; Starts initially with <b>200%</b> rate. <br />&bull; Decreases by <b>-15%</b> per age.<br />Finalizes at <b>50%</b><br /><br />",
+      "<b>Hunt Sanity threshold:</b><br />",
+      "&bull; Starts initially with <b>75%</b> rate. <br />&bull; Decreases by <b>-6%</b> per age.<br />Finalizes at <b>15%</b>"
     ]
   },
   {
-    "name": "Banshee",
-    "description": "A banshee has one target to kill and will not rest otherwise.",
-    "evidences": ["finger", "orbs", "dots"],
+    "name": "The Mimic",
+    "description": "The ghost that will act as any other ghost in the game!",
+    "evidences": ["sbox", "finger", "freezing", "orbs"],
     "identifiers": [
-      "&bull; You can smudge it yata <br />",
-      "&bull; Yeet yeet <br />",
-      "&bull; yaat yaat. <br />"
+      "&bull; Has a fourth evidence: ghost orbs<br />",
+      "<i>(Even in no-evidence)</i><br /><br />",
+      "<b>Will mimic ghost's properties:</b> <br />",
+      "&bull; Interaction and ghost event rates <br />",
+      "&bull; Hunt thresholds <br />",
+      "&bull; Hunt movement speeds <br />",
+      "&bull; Special Abilities <br />",
+      "<i>(Like the Obake's fingerprint ability)</i><br />"
+    ],
+    "properties": [
+      "&bull; May change every <br />30 seconds to 2 minutes.<br />&bull; Cannot change ghosts during hunts."
+    ]
+  },
+  {
+    "name": "The Twins",
+    "description": "The bonnie and clyde type of ghost!",
+    "evidences": ["emf", "sbox", "freezing"],
+    "identifiers": [
+      "&bull; May start hunts seperately. <br />",
+      "<i>(At different speeds)</i><br />",
+      "&bull; May both interact with the environment. <br />",
+      "&bull; Not actually two ghosts, just one. <br />",
+      "&bull; Does not have two different rooms."
+    ],
+    "properties": [
+      "&bull; Decoy 1 hunts at 1.5m/s <br />",
+      "&bull; Decoy 2 hunts at 1.9m/s <br />"
+    ]
+  },
+  {
+    "name": "Wraith",
+    "description": "The only flight ghost that will teleport to the player!",
+    "evidences": ["emf", "sbox", "dots"],
+    "identifiers": [
+      "&bull; May teleport to your location. <br />",
+      "<i>(This will create an EMF Level 2 or 5)</i><br />",
+      "&bull; Never steps in salt. <br />"
+    ]
+  },
+  {
+    "name": "Yokai",
+    "description": "The ghost that hates hearing people talk!",
+    "evidences": ["sbox", "orbs", "dots"],
+    "identifiers": [
+      "&bull; Can only hear within 2 meters of it. <br />",
+      "&bull; May hunt when speaking nearby it. <br />"
+    ],
+    "properties": [
+      "&bull; Hunt sanity threshold increased <br />to 80% when talking near it.<br />",
+      "&bull; Otherwise it's threshold<br />is the standard 50% <br />"
+    ]
+  },
+  {
+    "name": "Yurei",
+    "description": "The drainer of sanity!",
+    "evidences": ["orbs", "freezing", "dots"],
+    "identifiers": [
+      "&bull; May randomly shutdown a door and<br />",
+      "drain sanity as a result of it. <br />",
+      "&bull; Will be confined to room<br />after smudging  <br />"
+    ],
+    "properties": [
+      "&bull; Sanity decrease is within <br />7.5 meters of the ghost. <br />",
+      "and will decrease 15% of their sanity. <br />"
     ]
   }
 ]
