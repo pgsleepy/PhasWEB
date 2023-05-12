@@ -7,12 +7,14 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head />
-      <body className="z-0">
+      <body className="z-10">
         <NavBar />
         <Alert />
-        <Main />
-        <NextScript />
+
         <Footer />
+        <Main />
+
+        <NextScript />
       </body>
     </Html>
   );

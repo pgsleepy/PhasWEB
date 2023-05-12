@@ -1,6 +1,13 @@
+import Footer from "@/Components/Footer";
+import { faDiscord } from "@fortawesome/free-brands-svg-icons";
+import { faBook } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
+
 export default function Home() {
   return (
     <>
+      <title>Homepage - PhasWEB</title>
       <div
         className="hero min-h-screen"
         style={{
@@ -28,11 +35,39 @@ export default function Home() {
               <br />
               Then this website is where you need to be!
             </span>
-            <button className="btn btn-secondary">Shared Journal</button>{" "}
-            <button className="btn btn-secondary">Join our Discord!</button>
+            <div className="flex justify-center gap-2">
+              <Link className="btn " href="/setup-shared">
+                <FontAwesomeIcon
+                  style={{
+                    height: "1.5rem",
+                    width: "1.5rem",
+                    
+                    marginRight: "5px",
+                  }}
+                  icon={faBook}
+                />
+                Shared Journal
+              </Link>
+              <Link
+                className="btn "
+                target="_blank"
+                href="https://discord.com/invite/SHxEF2xB7G"
+              >
+                <FontAwesomeIcon
+                  style={{
+                    height: "1.5rem",
+                    width: "1.5rem",
+                    marginRight: "5px",
+                  }}
+                  icon={faDiscord}
+                />
+                DISCORD
+              </Link>
+            </div>
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
