@@ -1,10 +1,14 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDiscord } from "@fortawesome/free-brands-svg-icons";
+import Link from "next/link";
+import { faGhost } from "@fortawesome/free-solid-svg-icons";
 const links = [
   {
     href: "/",
     label: "Home",
   },
   {
-    href: "/shared-evidence",
+    href: "/setup-shared",
     label: "Shared journal",
   },
   {
@@ -31,9 +35,9 @@ export default function NavBar() {
               stroke="currentColor"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M4 6h16M4 12h8m-8 6h16"
               />
             </svg>
@@ -48,10 +52,13 @@ export default function NavBar() {
               </li>
             ))}
           </ul>
-        </div>
-        <a className="btn btn-ghost normal-case text-2xl font-bold bg-gradient-to-r from-slate-200 to-slate-500 bg-clip-text text-transparent">
+        </div>{" "}
+        <Link
+          href="/"
+          className="btn btn-ghost normal-case text-2xl font-bold bg-gradient-to-r from-slate-200 to-slate-500 bg-clip-text text-transparent"
+        >
           PhasWEB
-        </a>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -63,9 +70,17 @@ export default function NavBar() {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn" href="/login">
-          LOGIN
-        </a>
+        <Link
+          className="btn"
+          target="_blank"
+          href="https://discord.com/invite/SHxEF2xB7G"
+        >
+          <FontAwesomeIcon
+            style={{ height: "1.5rem", width: "1.5rem", marginRight: "5px" }}
+            icon={faDiscord}
+          />
+          DISCORD
+        </Link>
       </div>
     </div>
   );
