@@ -11,12 +11,14 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   let count = 0;
-  const socket = io("https://ws.rl-elo.com");
+  const socket = io("ws://premium02.consulhosting.net:24635");
 
   socket.emit("getPlayersOnline");
+  console.log(`Emitted...`);
 
   const countPromise = new Promise<number>((resolve) => {
     socket.on("getPlayersOnline", (count) => {
+      console.log(`Got response?`);
       resolve(count);
     });
   });
