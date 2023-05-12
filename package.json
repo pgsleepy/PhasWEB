@@ -19,6 +19,7 @@
   "homepage": "https://github.com/pgsleepy/PhasWEB#readme",
   "dependencies": {
     "bootstrap": "^5.2.3",
-    "react-bootstrap": "^2.7.2"
+    "react-bootstrap": "^2.7.2",
+    "socket.io": "^4.6.1"
   }
 }
