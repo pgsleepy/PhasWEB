@@ -11,7 +11,7 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   let count = 0;
-  const socket = io("http://localhost:24635");
+  const socket = io("https://ws.rl-elo.com");
 
   socket.emit("getPlayersOnline");
 
