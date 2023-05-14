@@ -1,3 +1,3 @@
 import io from "socket.io-client";
-const socket = io("https://ws.rl-elo.com");
+const socket = io("https://wss.rl-elo.com");
 export default socket;
