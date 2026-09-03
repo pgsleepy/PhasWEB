@@ -1,4 +1,5 @@
 # PhasWEB
+(Decided to publicize it, if anyone wants to iterate, copy or use for their own, they can.)
 
 PhasWEB is an application that is able to do multiple different things.
 Some of it's features include:
